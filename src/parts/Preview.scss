@@ -1,0 +1,35 @@
+@import "../variables.scss";
+
+.ps5-preview {
+  margin: $margin-x 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  @media (min-width: 576px) {
+    flex-wrap: nowrap;
+  }
+
+  .ps5-disk {
+    margin-top: 1rem;
+
+    @media (min-width: 576px) {
+      margin: 0;
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 300;
+  }
+
+  p {
+    max-width: 480px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+}

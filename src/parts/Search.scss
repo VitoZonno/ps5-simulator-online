@@ -1,0 +1,18 @@
+@import "../variables.scss";
+
+.ps5-modal-dialog {
+  input {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .ps5-disk {
+    div {
+      display: none;
+    }
+  }
+
+  .ps5-list {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}

@@ -1,0 +1,207 @@
+@import "../variables.scss";
+
+.ps5-home {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, #57484c, #10101c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .ps5-home-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 5rem;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .ps5-home-btn {
+    animation-duration: 3s;
+    animation-name: animation-shrink;
+    animation-iteration-count: infinite;
+
+    &:after {
+      display: none;
+    }
+
+    @keyframes animation-shrink {
+      10% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      12% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .ps5-shine {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      animation-duration: 3s;
+      animation-name: animation-grow !important;
+      animation-iteration-count: infinite;
+      animation-delay: 300ms;
+
+      &:after {
+        animation-duration: 3s;
+        animation-delay: 300ms;
+        border-width: 1px;
+        border-radius: inherit;
+      }
+
+      &:nth-of-type(2) {
+        animation-delay: 500ms;
+
+        &:after {
+          animation-delay: 500ms;
+        }
+      }
+      &:nth-of-type(3) {
+        animation-delay: 700ms;
+
+        &:after {
+          animation-delay: 700ms;
+        }
+      }
+
+      @keyframes animation-grow {
+        50% {
+          transform: scale(2);
+          opacity: 0.1;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &.exit {
+    transition: opacity $animation-time ($animation-time * 4) $animation-ease;
+    opacity: 0;
+
+    canvas {
+      transition: opacity $animation-time ($animation-time * 2) $animation-ease;
+      opacity: 0;
+    }
+
+    > a,
+    > div {
+      transition: opacity $animation-time $animation-ease,
+        transform $animation-time $animation-ease;
+      opacity: 0;
+      transform: scale(1.2);
+    }
+  }
+
+  &.enter {
+    transition: opacity $animation-time $animation-ease;
+    opacity: 0;
+
+    &.enter-active {
+      opacity: 1;
+    }
+  }
+}
+
+.ps5-cpanel {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  width: 320px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: linear-gradient(45deg, #2d2e33, #191a22);
+  box-shadow: -5px 0 15px black;
+  transform: translateX(100%);
+  transition: transform $animation-time $animation-ease;
+  will-change: transform;
+
+  @media (min-width: 576px) {
+    padding: 2rem;
+    width: 360px;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  h3 {
+    font-weight: 100;
+    margin-top: 0;
+  }
+
+  div {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  label {
+    display: inline-flex;
+    width: 47%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  span {
+    font-size: 1rem;
+  }
+
+  input {
+    &[type="color"] {
+      padding: 0;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 43px;
+    }
+
+    &[type="number"] {
+      width: 40px;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.ps5-cpanel-btn {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  right: 1rem;
+}

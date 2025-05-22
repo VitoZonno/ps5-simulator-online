@@ -1,0 +1,115 @@
+@import "../variables.scss";
+
+.ps5-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(black, 0.3);
+  backdrop-filter: blur(2px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  .ps5-modal-wrapper {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    background: linear-gradient(45deg, #2d2e33, #191a22);
+    border-radius: 5px;
+    box-shadow: 5px 0 15px black;
+
+    h2 {
+      font-weight: 100;
+      margin-top: 0;
+    }
+
+    .ps5-btn-group {
+      margin-bottom: 1.5rem;
+
+      img {
+        width: 25px;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .ps5-modal-dialog {
+      width: 100vw;
+      max-width: 400px;
+      padding: $margin-x/2;
+
+      @media (min-width: 576px) {
+        padding: $margin-x;
+      }
+    }
+
+    // .ps5-modal-settings{
+    //   position: fixed;
+    //   right: 0;
+    //   top: 0;
+    //   bottom: 0;
+    //   width: 300px;
+    //   background: inherit;
+    //   padding: 2rem;
+
+    //   + .ps5-btn {
+    //     position: fixed;
+    //     right: 1rem;
+    //     top: 1rem;
+    //   }
+    // }
+
+    .ps5-modal-image,
+    .ps5-modal-video {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      padding: $margin-x 0;
+      box-sizing: border-box;
+
+      @media (min-width: 576px) {
+        padding: $margin-x;
+      }
+
+      iframe {
+        box-shadow: 5px 0 15px black;
+      }
+    }
+
+    .ps5-modal-image {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .ps5-modal-btn {
+      position: absolute;
+      z-index: 1;
+      right: 1rem;
+      top: 1rem;
+    }
+  }
+
+  &.exit-active,
+  &.enter {
+    opacity: 0;
+    transition: ($animation-time * 2) $animation-ease;
+  }
+
+  &.exit,
+  &.enter,
+  &.enter-done {
+    display: flex;
+  }
+
+  &.enter-active {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,101 @@
+@import "../variables.scss";
+
+.ps5-disk {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  background-size: cover;
+  background-position: center;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(black, 1));
+    background-position: 50% 101%;
+    background-repeat: no-repeat;
+    background-size: 100% 0%;
+    transition: background-size $animation-time $animation-ease;
+  }
+
+  div {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 1rem;
+
+    > * {
+      margin: 0;
+    }
+
+    span {
+      display: inline-block;
+      border: 1px solid;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 200;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 1rem;
+    }
+  }
+
+  &.ps5-disk-mid {
+    &:before {
+      background-size: 100% 40%;
+    }
+
+    h3 {
+      display: none;
+    }
+
+    &:focus,
+    &:hover {
+      &:before {
+        background-size: 100% 100%;
+      }
+
+      h3 {
+        display: block;
+      }
+    }
+  }
+
+  &.ps5-disk-min {
+    &:before {
+      background-size: 100% 20%;
+    }
+
+    h3,
+    span {
+      display: none;
+    }
+
+    &:focus,
+    &:hover {
+      &:before {
+        background-size: 100% 80%;
+      }
+
+      h3,
+      span {
+        display: block;
+      }
+    }
+  }
+}

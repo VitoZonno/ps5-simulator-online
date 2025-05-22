@@ -1,0 +1,50 @@
+@import "../variables.scss";
+
+.ps5-menu {
+  transition: transform $animation-time $animation-ease;
+  gap: 7px;
+
+  .ps5-disk {
+    border-radius: 20px;
+    transform-origin: top;
+    transition: width $animation-time $animation-ease;
+    width: 75px;
+    will-change: width;
+
+    &:after {
+      border-radius: inherit;
+    }
+
+    div {
+      transition: opacity $animation-time $animation-ease;
+      opacity: 0;
+      will-change: opacity;
+      font-weight: 300;
+      bottom: initial;
+      top: 100%;
+      left: -10%;
+      width: 250px;
+
+      @media (min-width: 576px) {
+        top: 55%;
+        width: auto;
+        left: 100%;
+        white-space: nowrap;
+      }
+
+      span,
+      p {
+        display: none;
+      }
+    }
+
+    &.active {
+      width: 130px;
+
+      div {
+        transition-delay: $animation-time;
+        opacity: 1;
+      }
+    }
+  }
+}

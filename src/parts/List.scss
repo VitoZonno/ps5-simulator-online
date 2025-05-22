@@ -1,0 +1,46 @@
+@import "../variables.scss";
+
+.ps5-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (min-width: 576px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  &.ps5-list-shrink {
+    .ps5-disk {
+      &:before {
+        padding-bottom: 63%;
+      }
+    }
+  }
+
+  &.ps5-list-extend {
+    .ps5-disk {
+      &:before {
+        padding-bottom: 150%;
+        background-size: 100% 80%;
+      }
+
+      &.ps5-disk-locked {
+        filter: grayscale(100%);
+        transition: filter $animation-time $animation-ease;
+
+        &:hover,
+        &:focus {
+          filter: grayscale(0%);
+        }
+      }
+    }
+  }
+}
